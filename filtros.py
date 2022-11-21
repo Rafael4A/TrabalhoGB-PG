@@ -47,10 +47,10 @@ def cores_frias(imagem):
 
 def cores_quentes(imagem):
     aumentar_LookupTable = LookupTable([0, 64, 128, 256], [0, 80, 160, 256])
-    decreaseLookupTable = LookupTable([0, 64, 128, 256], [0, 50, 100, 256])
+    diminuir_LookupTable = LookupTable([0, 64, 128, 256], [0, 50, 100, 256])
     azul, verde, vermelho = cv2.split(imagem)
     vermelho = cv2.LUT(vermelho, aumentar_LookupTable).astype(np.uint8)
-    azul = cv2.LUT(azul, decreaseLookupTable).astype(np.uint8)
+    azul = cv2.LUT(azul, diminuir_LookupTable).astype(np.uint8)
     sum = cv2.merge((azul, verde, vermelho))
     return sum
 
